@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { GameMode, ScenarioType, PlayerStats, WeaponStatus, Settings, HighScore } from './types/game';
-import { loadSettings, saveSettings, loadHighScores, saveHighScore } from './utils/storage';
-import { MainMenu } from './components/MainMenu';
-import { HUD } from './components/HUD';
-import { PauseMenu } from './components/PauseMenu';
-import { GameOverModal } from './components/GameOverModal';
-import { SettingsModal } from './components/SettingsModal';
-import { HighScoresModal } from './components/HighScoresModal';
-import { Game2DCanvas } from './components/Game2DCanvas';
-import { Game3DCanvas } from './components/Game3DCanvas';
+import { GameMode, ScenarioType, PlayerStats, WeaponStatus, Settings, HighScore } from './types/game.ts';
+import { loadSettings, saveSettings, loadHighScores, saveHighScore } from './utils/storage.ts';
+import { MainMenu } from './components/MainMenu.tsx';
+import { HUD } from './components/HUD.tsx';
+import { PauseMenu } from './components/PauseMenu.tsx';
+import { GameOverModal } from './components/GameOverModal.tsx';
+import { SettingsModal } from './components/SettingsModal.tsx';
+import { HighScoresModal } from './components/HighScoresModal.tsx';
+import { Game2DCanvas } from './components/Game2DCanvas.tsx';
+import { Game3DCanvas } from './components/Game3DCanvas.tsx';
 
 export default function App() {
   const [mode, setMode] = useState<GameMode>('menu');
@@ -112,8 +112,8 @@ export default function App() {
         setIsPaused((prev) => !prev);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    globalThis.addEventListener('keydown', handleKeyDown);
+    return () => globalThis.removeEventListener('keydown', handleKeyDown);
   }, [mode, isGameOver]);
 
   return (

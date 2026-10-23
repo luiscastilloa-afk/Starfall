@@ -32,19 +32,19 @@ export class InputManager {
   }
 
   public attach() {
-    window.addEventListener('keydown', this.handleKeyDown);
-    window.addEventListener('keyup', this.handleKeyUp);
-    window.addEventListener('mousemove', this.handleMouseMove);
-    window.addEventListener('mousedown', this.handleMouseDown);
-    window.addEventListener('mouseup', this.handleMouseUp);
+    globalThis.addEventListener('keydown', this.handleKeyDown);
+    globalThis.addEventListener('keyup', this.handleKeyUp);
+    globalThis.addEventListener('mousemove', this.handleMouseMove);
+    globalThis.addEventListener('mousedown', this.handleMouseDown);
+    globalThis.addEventListener('mouseup', this.handleMouseUp);
   }
 
   public detach() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-    window.removeEventListener('keyup', this.handleKeyUp);
-    window.removeEventListener('mousemove', this.handleMouseMove);
-    window.removeEventListener('mousedown', this.handleMouseDown);
-    window.removeEventListener('mouseup', this.handleMouseUp);
+    globalThis.removeEventListener('keydown', this.handleKeyDown);
+    globalThis.removeEventListener('keyup', this.handleKeyUp);
+    globalThis.removeEventListener('mousemove', this.handleMouseMove);
+    globalThis.removeEventListener('mousedown', this.handleMouseDown);
+    globalThis.removeEventListener('mouseup', this.handleMouseUp);
   }
 
   private handleKeyDown(e: KeyboardEvent) {

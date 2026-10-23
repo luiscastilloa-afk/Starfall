@@ -1,5 +1,5 @@
 import React from 'react';
-import { GameMode, ScenarioType } from '../types/game';
+import { GameMode, ScenarioType } from '../types/game.ts';
 import { Play, Shield, Globe, Orbit, ShieldAlert, Cloud, Flame, Trophy, Settings, Crosshair } from 'lucide-react';
 
 interface MainMenuProps {
@@ -90,6 +90,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             const isSelected = selectedScenario === sc.id;
             return (
               <button
+                type="button"
                 key={sc.id}
                 onClick={() => setSelectedScenario(sc.id)}
                 className={`relative flex flex-col p-4 rounded-xl text-left border transition-all duration-200 backdrop-blur-md bg-gradient-to-b ${
@@ -117,6 +118,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
       {/* Mode Selection Buttons */}
       <section className="z-10 w-full max-w-2xl flex flex-col sm:flex-row gap-4 my-6">
         <button
+          type="button"
           onClick={() => onStartGame('2d', selectedScenario)}
           className="flex-1 group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-lg shadow-[0_0_25px_rgba(14,165,233,0.4)] border border-cyan-400/40 transition-all hover:scale-105 active:scale-95"
         >
@@ -128,6 +130,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
         </button>
 
         <button
+          type="button"
           onClick={() => onStartGame('3d', selectedScenario)}
           className="flex-1 group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-lg shadow-[0_0_25px_rgba(168,85,247,0.4)] border border-purple-400/40 transition-all hover:scale-105 active:scale-95"
         >
@@ -142,12 +145,14 @@ export const MainMenu: React.FC<MainMenuProps> = ({
       {/* Footer / Utility Action Buttons */}
       <footer className="z-10 flex items-center gap-4 mb-2">
         <button
+          type="button"
           onClick={onOpenHighScores}
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700/80 text-slate-300 hover:text-white hover:border-slate-500 transition-all text-sm backdrop-blur-md"
         >
           <Trophy className="w-4 h-4 text-amber-400" /> Récords
         </button>
         <button
+          type="button"
           onClick={onOpenSettings}
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-700/80 text-slate-300 hover:text-white hover:border-slate-500 transition-all text-sm backdrop-blur-md"
         >

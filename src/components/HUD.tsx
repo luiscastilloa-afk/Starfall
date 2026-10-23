@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayerStats, WeaponStatus, GameMode } from '../types/game';
+import { PlayerStats, WeaponStatus, GameMode } from '../types/game.ts';
 import { Shield, Heart, Zap, Target, Crosshair } from 'lucide-react';
 
 interface HUDProps {
@@ -79,6 +79,7 @@ export const HUD: React.FC<HUDProps> = ({ stats, weapon, mode, onPause, radarBli
         {/* Top Right: Controls / Pause */}
         <div className="flex items-center gap-3 pointer-events-auto">
           <button
+            type="button"
             onClick={onPause}
             className="px-4 py-2 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 rounded-lg text-sm font-sans tracking-wide transition-all shadow-lg"
           >

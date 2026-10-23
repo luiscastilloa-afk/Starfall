@@ -1,11 +1,11 @@
-import { Settings } from '../types/game';
+import { Settings } from '../types/game.ts';
 
 class SoundSynthesizer {
   private ctx: AudioContext | null = null;
 
   private initCtx() {
     if (!this.ctx) {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioCtx = globalThis.AudioContext || (globalThis as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (AudioCtx) {
         this.ctx = new AudioCtx();
       }

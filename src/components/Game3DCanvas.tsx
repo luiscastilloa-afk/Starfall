@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ScenarioType, Settings, PlayerStats, WeaponStatus } from '../types/game';
-import { InputManager } from '../systems/input';
-import { audioSynth } from '../utils/audio';
+import { ScenarioType, Settings, PlayerStats, WeaponStatus } from '../types/game.ts';
+import { InputManager } from '../systems/input.ts';
+import { audioSynth } from '../utils/audio.ts';
 
 export interface Game3DProps {
   scenario: ScenarioType;
@@ -73,14 +73,14 @@ export const Game3DCanvas: React.FC<Game3DProps> = ({
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      globalThis.innerWidth / globalThis.innerHeight,
       0.1,
       2000
     );
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
+    renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     container.appendChild(renderer.domElement);
@@ -294,11 +294,11 @@ export const Game3DCanvas: React.FC<Game3DProps> = ({
     spawnWave3D(player.wave);
 
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = globalThis.innerWidth / globalThis.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
     };
-    window.addEventListener('resize', handleResize);
+    globalThis.addEventListener('resize', handleResize);
 
     let lastTime = performance.now();
 
@@ -641,7 +641,7 @@ export const Game3DCanvas: React.FC<Game3DProps> = ({
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      globalThis.removeEventListener('resize', handleResize);
       input.detach();
       if (renderer.domElement.parentNode) {
         renderer.domElement.parentNode.removeChild(renderer.domElement);

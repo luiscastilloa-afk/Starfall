@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { ScenarioType, Settings, PlayerStats, WeaponStatus } from '../types/game';
-import { InputManager } from '../systems/input';
-import { audioSynth } from '../utils/audio';
+import { ScenarioType, Settings, PlayerStats, WeaponStatus } from '../types/game.ts';
+import { InputManager } from '../systems/input.ts';
+import { audioSynth } from '../utils/audio.ts';
 
 export interface Game2DProps {
   scenario: ScenarioType;
@@ -104,11 +104,11 @@ export const Game2DCanvas: React.FC<Game2DProps> = ({
 
     // Canvas sizing
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = globalThis.innerWidth;
+      canvas.height = globalThis.innerHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    globalThis.addEventListener('resize', resizeCanvas);
 
     // World size
     const worldWidth = canvas.width;
@@ -147,7 +147,7 @@ export const Game2DCanvas: React.FC<Game2DProps> = ({
     let enemies: Enemy[] = [];
     let particles: Particle[] = [];
     let powerups: Powerup[] = [];
-    let asteroids: Asteroid[] = [];
+    const asteroids: Asteroid[] = [];
 
     // Background Stars
     const stars = Array.from({ length: 150 }, () => ({
@@ -678,7 +678,7 @@ export const Game2DCanvas: React.FC<Game2DProps> = ({
       ctx.clearRect(0, 0, worldWidth, worldHeight);
 
       // 1. Scenario Background Theme
-      let bgGrad = ctx.createRadialGradient(
+      const bgGrad = ctx.createRadialGradient(
         worldWidth / 2,
         worldHeight / 2,
         100,
@@ -878,7 +878,7 @@ export const Game2DCanvas: React.FC<Game2DProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resizeCanvas);
+      globalThis.removeEventListener('resize', resizeCanvas);
       input.detach();
     };
   }, [scenario, settings, isPaused, onGameOver, onUpdateStats, onUpdateWeapon, onUpdateRadar]);

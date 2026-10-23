@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GameMode, ScenarioType } from '../types/game';
+import { GameMode, ScenarioType } from '../types/game.ts';
 import { Trophy, RotateCcw, Home, Skull } from 'lucide-react';
 
 interface GameOverModalProps {
@@ -88,6 +88,7 @@ export const GameOverModal: React.FC<GameOverModalProps> = ({
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 w-full">
           <button
+            type="button"
             onClick={onRestart}
             className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all shadow-lg"
           >
@@ -95,6 +96,7 @@ export const GameOverModal: React.FC<GameOverModalProps> = ({
           </button>
 
           <button
+            type="button"
             onClick={onQuitToMenu}
             className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all"
           >

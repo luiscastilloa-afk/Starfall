@@ -1,4 +1,4 @@
-import { HighScore, Settings } from '../types/game';
+import { HighScore, Settings } from '../types/game.ts';
 
 const SETTINGS_KEY = 'starfall_settings';
 const HIGHSCORES_KEY = 'starfall_highscores';

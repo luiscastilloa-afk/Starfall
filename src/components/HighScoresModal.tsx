@@ -1,5 +1,5 @@
 import React from 'react';
-import { HighScore } from '../types/game';
+import { HighScore } from '../types/game.ts';
 import { Trophy, X, ShieldAlert } from 'lucide-react';
 
 interface HighScoresModalProps {
@@ -12,6 +12,7 @@ export const HighScoresModal: React.FC<HighScoresModalProps> = ({ highScores, on
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
       <div className="w-full max-w-lg p-6 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl relative text-left">
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1"
         >
@@ -69,6 +70,7 @@ export const HighScoresModal: React.FC<HighScoresModalProps> = ({ highScores, on
         )}
 
         <button
+          type="button"
           onClick={onClose}
           className="w-full mt-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-all"
         >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings } from '../types/game';
+import { Settings } from '../types/game.ts';
 import { Volume2, VolumeX, Shield, X } from 'lucide-react';
 
 interface SettingsModalProps {
@@ -17,6 +17,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
       <div className="w-full max-w-md p-6 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl relative text-left">
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1"
         >
@@ -35,6 +36,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <span>Sonido Global</span>
             </div>
             <button
+              type="button"
               onClick={() => onUpdateSettings({ ...settings, soundEnabled: !settings.soundEnabled })}
               className={`w-12 h-6 rounded-full transition-colors relative p-0.5 ${
                 settings.soundEnabled ? 'bg-cyan-500' : 'bg-slate-700'
@@ -73,6 +75,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 const labels = { easy: 'Fácil', normal: 'Normal', hard: 'Difícil' };
                 return (
                   <button
+                    type="button"
                     key={diff}
                     onClick={() => onUpdateSettings({ ...settings, difficulty: diff })}
                     className={`py-2 rounded-lg text-xs font-bold uppercase transition-all ${
@@ -92,6 +95,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="flex items-center justify-between pt-2 border-t border-slate-800">
             <span className="text-sm text-slate-300 font-medium">Invertir Eje Y (Modo 3D)</span>
             <button
+              type="button"
               onClick={() => onUpdateSettings({ ...settings, invertedY: !settings.invertedY })}
               className={`w-12 h-6 rounded-full transition-colors relative p-0.5 ${
                 settings.invertedY ? 'bg-cyan-500' : 'bg-slate-700'
@@ -107,6 +111,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         <button
+          type="button"
           onClick={onClose}
           className="w-full mt-6 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all"
         >
